@@ -70,6 +70,8 @@ In this project we are going to try to give an answer to the next questions:
 <a id='results'></a>
 ## Results
 
+The main findings of the code can be found at the post available [here](https://medium.com/@jesus.mira74/airbnb-analysis-from-coast-to-coast-f063c6b28944). This post is very summarized and it doesn't include the predictive part, but I put the results a little more detailed below.
+
 <a id='perception'></a>
 ### 1. Perception of the Customers of the Different Types of Hosts
 
