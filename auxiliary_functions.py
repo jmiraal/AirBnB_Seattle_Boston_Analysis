@@ -13,10 +13,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
 
-### It transforms a column into dummy columns and save their name into a list.
-### It also saves the name of the category used as intercept.
 def get_dummy_columns(df, column):
     '''
+    USAGE: 
+        It transforms a column into dummy columns and save their name into a list.
+        It also saves the name of the category used as intercept.
+        
     INPUT
         df: Dataframe with the categorical column tha we want to convert.
         column: Column that we want to convert in dummy columns
@@ -47,10 +49,10 @@ def get_dummy_columns(df, column):
 
 
 
-
-### It draws a scatter plot wiht a picture of a map in the background
 def scatter_map(df, map_pic, color_col, size_col, box, scale_size, annot_limit, figsize = (10,16)):
     '''
+    USAGE: 
+        It draws a scatter plot wiht a picture of a map in the background
     INPUT    
         df: Dataframe with the columns 'logngitud', 'latitude', a column with the size of the points
             and another column for the colors of the points.    
@@ -117,12 +119,12 @@ def scatter_map(df, map_pic, color_col, size_col, box, scale_size, annot_limit, 
     return ax
 
 
-
-
-#It recives the dataframe for Boston and Seatle with the dummy columns we want to compare. It returns a new dataframe with the mean of 
-#this columns for each neighbourhood group and for each city. It shows us also the difference between the two cities.
 def prepare_feature_by_neighbourhood(df_boston, df_seattle, columns_boston, columns_seattle, feature_name, limit):
     '''
+    USAGE: 
+        It recives the dataframe for Boston and Seatle with the dummy columns we want to compare. It returns 
+        a new dataframe with the mean of this columns for each neighbourhood group and for each city. It shows 
+        us also the difference between the two cities.
     INPUT
         df_boston: dataframe with the data of Boston
         df_boston: dataframe with the data of Seattle
@@ -189,10 +191,10 @@ def prepare_feature_by_neighbourhood(df_boston, df_seattle, columns_boston, colu
     return comp_df
 
 
-
-### A function that applies the Linear Regression model over a matrix of features X and a response y
 def apply_lm_mod(X, y, test_size = .30, random_state=42, normalize = True):
     '''
+    USAGE: 
+        A function that applies the Linear Regression model over a matrix of features X and a response y
     INPUT
         X - pandas dataframe, X matrix
         y - pandas dataframe, response variable
@@ -229,12 +231,12 @@ def apply_lm_mod(X, y, test_size = .30, random_state=42, normalize = True):
     
     return coefs_df, lm_model.intercept_, r2_scores_test, r2_scores_train
     
-    
-    
-### A function to reduce the number of features applying cutoffs (maximum number of zeros in a variable). 
-### Finally use the Liner Regression model for each cutoff.    
+     
 def find_optimal_lm_mod(X, y, cutoffs, test_size = .30, random_state=42, plot=True):
     '''
+    USAGE: 
+        A function to reduce the number of features applying cutoffs (maximum number of zeros in a variable).
+        Finally use the Liner Regression model for each cutoff.
     INPUT
         X - pandas dataframe, X matrix
         y - pandas dataframe, response variable
@@ -334,9 +336,11 @@ def find_optimal_lm_mod(X, y, cutoffs, test_size = .30, random_state=42, plot=Tr
     return coefs_df, r2_scores_test_max, r2_scores_train_max, X_train, X_test, y_train, y_test, lm_model
     
     
-### A function to apply Ridge and Lasso.    
+
 def find_optimal_lr_mod(X, y, alpha_list, model = 'Lasso', test_size = .30, random_state=42, plot=True, normalize = True):
     '''
+    USAGE: 
+        A function to apply Ridge and Lasso.
     INPUT
         X - pandas dataframe, X matrix
         y - pandas dataframe, response variable
@@ -437,11 +441,12 @@ def find_optimal_lr_mod(X, y, alpha_list, model = 'Lasso', test_size = .30, rand
     return coefs_df, r2_scores_test_max, r2_scores_train_max, X_train, X_test, y_train, y_test, lm_model
     
     
-### A function that applies the Random Forest model. 
-### It receives a list of cutoffs as a parameter. This cutoffs determine the number of 0's
-### that a feature can have to be included in the feature matrix.
 def find_optimal_rf_mod(X, y, cutoffs, test_size = .30, random_state=42, plot=True):
     '''
+    USAGE: 
+        A function that applies the Random Forest model.
+        It receives a list of cutoffs as a parameter. This cutoffs determine the number of 0's
+        that a feature can have to be included in the feature matrix.
     INPUT
         X - pandas dataframe, X matrix
         y - pandas dataframe, response variable
@@ -532,9 +537,10 @@ def find_optimal_rf_mod(X, y, cutoffs, test_size = .30, random_state=42, plot=Tr
     return r2_scores_test_max, r2_scores_train_max, rf_model, X_train, X_test, y_train, y_test
     
 
-### This function applies Random Forest over Grid Search Cross Validation
 def find_optimal_rf_gs_mod(X, y, cutoffs, test_size = .30, random_state=42, plot=True, param_grid=None):
     '''
+    USAGE: 
+        This function applies Random Forest over Grid Search Cross Validation
     INPUT
        X - pandas dataframe, X matrix
        y - pandas dataframe, response variable
